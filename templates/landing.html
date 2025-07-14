@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Landing Page</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <!-- Stars background -->
+  <div class="stars"></div>
+
+  <!-- Star animation script (original simple version) -->
+  <script>
+    const starsContainer = document.querySelector('.stars');
+    for (let i = 0; i < 200; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      starsContainer.appendChild(star);
+    }
+  </script>
+
+  <!-- Logo in top-left -->
+  <div class="logo-container">
+    <img src="{{ url_for('static', filename='3.png') }}" alt="Logo" class="logo">
+  </div>
+
+  <!-- Main centered content -->
+  <div class="main-content">
+    <header>
+      <h1>Internal Control Enhancement</h1>
+      <p>Optimize your portfolio for robust internal controls and risk management.</p>
+      <a href="{{ url_for('input_page') }}" class="btn">Get Started</a>
+    </header>
+  </div>
+
+  <!-- ✅ Footer -->
+  <footer class="footer">
+    Powered By Aravind Suresh
+</body>
+</html>

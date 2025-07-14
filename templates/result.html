@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Results</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    .risk-icon {
+      vertical-align: middle;
+      margin-left: 8px;
+      width: 1.2em;
+      height: 1.2em;
+      fill: currentColor;
+    }
+
+    .input-values-box {
+      border: 2px solid #5a2d82;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 8px;
+      background-color: rgba(0, 0, 0, 0.4);
+      box-shadow: 0 0 15px rgba(90, 45, 130, 0.6);
+    }
+
+    .input-values-box ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .input-values-box ul li {
+      margin-bottom: 8px;
+      font-size: 1.1em;
+      color: #e0e0e0;
+    }
+
+    .input-values-box h2 {
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 15px;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+
+  <div class="logo-container">
+    <img src="{{ url_for('static', filename='3.png') }}" alt="Logo" class="logo">
+  </div>
+
+  <script>
+    const starsContainer = document.querySelector('.stars');
+    for (let i = 0; i < 200; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      starsContainer.appendChild(star);
+    }
+  </script>
+
+  <main>
+    <h1>Control Optimization Insights</h1>
+    <p><strong>Prediction:</strong> <span id="predictionResult"></span></p>
+
+    <div class="input-values-box">
+      <h2>Input Values:</h2>
+      <ul>
+        <li><strong>Audit Risk:</strong> {{ Audit_Risk }}</li>
+        <li><strong>Inherent Risk:</strong> {{ Inherent_Risk }}</li>
+        <li><strong>Score:</strong> {{ Score }}</li>
+        <li><strong>TOTAL:</strong> {{ TOTAL }}</li>
+        <li><strong>Money Value:</strong> {{ Money_Value }}</li>
+      </ul>
+    </div>
+
+    <div class="actions">
+      <a href="{{ url_for('input_page') }}" class="btn">Check Another Portfolio</a>
+      <a href="{{ url_for('landing_page') }}" class="btn">Home</a>
+      <a href="{{ url_for('download_predictions_log') }}" class="btn download-btn">Download Predictions Log</a>
+    </div>
+  </main>
+
+  <script>
+    const predictionText = "{{ prediction }}";
+    const predictionElement = document.getElementById('predictionResult');
+
+    predictionElement.textContent = predictionText;
+
+    if (predictionText.includes("High Risk")) {
+      predictionElement.classList.add('high-risk-text');
+      predictionElement.insertAdjacentHTML('beforeend', `
+        <svg class="risk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      `);
+    } else if (predictionText.includes("Low Risk")) {
+      predictionElement.classList.add('low-risk-text');
+      predictionElement.insertAdjacentHTML('beforeend', `
+        <svg class="risk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      `);
+    }
+  </script>
+
+  <footer class="footer">
+    Powered By Aravind Suresh
+  </footer>
+</body>
+</html>

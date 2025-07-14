@@ -1,0 +1,94 @@
+🟢 DATA OVERVIEW
+
+   Sector_score LOCATION_ID  PARA_A  Score_A  Risk_A  PARA_B  ...  Score  Inherent_Risk  CONTROL_RISK  Detection_Risk  Audit_Risk  Risk
+0          3.89          23    4.18      0.6   2.508    2.50  ...    2.4          8.574           0.4             0.5      1.7148     1
+1          3.89           6    0.00      0.2   0.000    4.83  ...    2.0          2.554           0.4             0.5      0.5108     0
+2          3.89           6    0.51      0.2   0.102    0.23  ...    2.0          1.548           0.4             0.5      0.3096     0
+3          3.89           6    0.00      0.2   0.000   10.80  ...    4.4         17.530           0.4             0.5      3.5060     1
+4          3.89           6    0.00      0.2   0.000    0.08  ...    2.0          1.416           0.4             0.5      0.2832     0
+5          3.89           6    0.00      0.2   0.000    0.83  ...    2.0          2.156           0.4             0.5      0.4312     0
+6          3.89           7    1.10      0.4   0.440    7.41  ...    3.2         31.774           0.4             0.5      6.3548     1
+7          3.89           8    8.50      0.6   5.100   12.03  ...    4.2         18.034           0.4             0.5      3.6068     1
+8          3.89           8    8.40      0.6   5.040   11.05  ...    4.2         17.206           0.4             0.5      3.4412     1
+9          3.89           8    3.98      0.6   2.388    0.99  ...    2.4          4.372           0.4             0.5      0.8744     0
+
+[10 rows x 27 columns]
+
+
+🔢 DATA TYPES
+
+Sector_score      float64
+LOCATION_ID        object
+PARA_A            float64
+Score_A           float64
+Risk_A            float64
+PARA_B            float64
+Score_B           float64
+Risk_B            float64
+TOTAL             float64
+numbers           float64
+Score_B.1         float64
+Risk_C            float64
+Money_Value       float64
+Score_MV          float64
+Risk_D            float64
+District_Loss       int64
+PROB              float64
+RiSk_E            float64
+History             int64
+Prob              float64
+Risk_F            float64
+Score             float64
+Inherent_Risk     float64
+CONTROL_RISK      float64
+Detection_Risk    float64
+Audit_Risk        float64
+Risk                int64
+dtype: object
+
+
+📊 NULL VALUES
+
+Sector_score      0
+LOCATION_ID       0
+PARA_A            0
+Score_A           0
+Risk_A            0
+PARA_B            0
+Score_B           0
+Risk_B            0
+TOTAL             0
+numbers           0
+Score_B.1         0
+Risk_C            0
+Money_Value       1
+Score_MV          0
+Risk_D            0
+District_Loss     0
+PROB              0
+RiSk_E            0
+History           0
+Prob              0
+Risk_F            0
+Score             0
+Inherent_Risk     0
+CONTROL_RISK      0
+Detection_Risk    0
+Audit_Risk        0
+Risk              0
+dtype: int64
+
+
+📈 DESCRIPTIVE STATS
+
+       Sector_score      PARA_A     Score_A      Risk_A       PARA_B  ...  Inherent_Risk  CONTROL_RISK  Detection_Risk  Audit_Risk        Risk
+count    776.000000  776.000000  776.000000  776.000000   776.000000  ...     776.000000    776.000000           776.0  776.000000  776.000000
+mean      20.184536    2.450194    0.351289    1.351029    10.799988  ...      17.680612      0.572680             0.5    7.168158    0.393041
+std       24.319017    5.678870    0.174055    3.440447    50.083624  ...      54.740244      0.444581             0.0   38.667494    0.488741
+min        1.850000    0.000000    0.200000    0.000000     0.000000  ...       1.400000      0.400000             0.5    0.280000    0.000000
+25%        2.370000    0.210000    0.200000    0.042000     0.000000  ...       1.583500      0.400000             0.5    0.316700    0.000000
+50%        3.890000    0.875000    0.200000    0.175000     0.405000  ...       2.214000      0.400000             0.5    0.555600    0.000000
+75%       55.570000    2.480000    0.600000    1.488000     4.160000  ...      10.663500      0.400000             0.5    3.249900    1.000000
+max       59.850000   85.000000    0.600000   51.000000  1264.630000  ...     801.262000      5.800000             0.5  961.514400    1.000000
+
+[8 rows x 26 columns]

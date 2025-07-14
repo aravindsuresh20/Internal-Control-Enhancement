@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Input Form</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="stars"></div>
+
+  <!-- Logo in top-left -->
+  <div class="logo-container">
+    <img src="{{ url_for('static', filename='3.png') }}" alt="Logo" class="logo">
+  </div>
+
+  <!-- Star animation script -->
+  <script>
+  const starsContainer = document.querySelector('.stars');
+  for (let i = 0; i < 200; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    starsContainer.appendChild(star);
+  }
+    function validateNumericInput(event) {
+      const charCode = (event.which) ? event.which : event.keyCode;
+      if (
+        (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 46) &&
+        !(charCode >= 37 && charCode <= 40) &&
+        charCode !== 8 && charCode !== 9 && charCode !== 13
+      ) {
+        event.preventDefault();
+      }
+      if (charCode === 46 && event.target.value.includes('.')) {
+        event.preventDefault();
+      }
+    }
+
+    function onPasteNumericOnly(event) {
+      const pastedData = event.clipboardData.getData('text');
+      const cleanedData = pastedData.replace(/[^0-9.]/g, '');
+      const decimalParts = cleanedData.split('.');
+      if (decimalParts.length > 2) {
+        event.target.value = decimalParts[0] + '.' + decimalParts.slice(1).join('');
+      } else {
+        event.target.value = cleanedData;
+      }
+      event.preventDefault();
+    }
+  </script>
+
+  <main>
+    <h1>Internal Control Metrics Input</h1>
+    <form action="{{ url_for('predict') }}" method="post">
+      <label>Audit Risk: <input type="number" step="any" name="Audit_Risk" required onkeydown="validateNumericInput(event)" onpaste="onPasteNumericOnly(event)"></label><br>
+      <label>Inherent Risk: <input type="number" step="any" name="Inherent_Risk" required onkeydown="validateNumericInput(event)" onpaste="onPasteNumericOnly(event)"></label><br>
+      <label>Score: <input type="number" step="any" name="Score" required onkeydown="validateNumericInput(event)" onpaste="onPasteNumericOnly(event)"></label><br>
+      <label>TOTAL: <input type="number" step="any" name="TOTAL" required onkeydown="validateNumericInput(event)" onpaste="onPasteNumericOnly(event)"></label><br>
+      <label>Money Value: <input type="number" step="any" name="Money_Value" required onkeydown="validateNumericInput(event)" onpaste="onPasteNumericOnly(event)"></label><br>
+      <button type="submit" class="btn">Analyze Portfolio</button>
+    </form>
+  </main>
+
+  <!-- ✅ Footer added -->
+  <footer class="footer">
+    Powered By Aravind Suresh
+  </footer>
+</body>
+</html>
